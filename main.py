@@ -24,12 +24,21 @@ def clear():
 
   #WINDOWS
   if name == 'nt':
-    _ = system('cls')
+    system('cls')
 
   #UNIX
   else:
-    _ = system('clear')
+    system('clear')
 #||-------------------||#
+
+
+#||===================||#
+#||===MENU=CONTEXT====||#
+#||===================||#
+def about_text():
+  print("The Last Quiz Master is a text based quiz rpg game written\nin python. It is based off the story of an unlucky adventurer,\nwho is lost in the land of Uulgurm'ath.This ancient land is\nriddled with many hostile creatures. To survive you must have\nwitt, intelligence and bravery. You decide how you go about in\nthis adventure.")
+  time.sleep(9)
+  print("\nTo fulfil your burning curiosity, here is my github link: \nhttps://github.com/corbanchurchill/The-Last-Quiz-Master\n\naGVyZSBpcyB0aGUgc291cmNlIG9mIG1vc3Qgb2YgbXkgcXVlc3Rpb25zOg0KaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvTGlzdF9vZl9jb21tb25fbWlzY29uY2VwdGlvbnM=")
 
 
 
@@ -66,30 +75,32 @@ def title_welcome():
 def title_screen_to():
   print(
     """
-                        =------=
-                         ┌┬┐┌─┐
-                          │ │ │
-                          ┴ └─┘
-                        =------=
+                         =------=
+                          ┌┬┐┌─┐
+                           │ │ │
+                           ┴ └─┘
+                         =------=
     """
   )
 
 #||=====MAIN=MENU======||#
-def main_menu():
-  print(
-    """
+main_menu ="""
 ============================
   ╔╦╗╔═╗╦╔╗╔  ╔╦╗╔═╗╔╗╔╦ ╦
   ║║║╠═╣║║║║  ║║║║╣ ║║║║ ║
   ╩ ╩╩ ╩╩╝╚╝  ╩ ╩╚═╝╝╚╝╚═╝
 ============================
-    """
-  )
+
+ Welcome to a new adventure!
+
+1. Begin
+2. Info
+3. About
+
+"""
 
 #||CHARACTER=CREATION||#
-def char_create_menu():
-  print(
-    """
+char_create_menu ="""
    ============================= 
     ╔═╗╦ ╦╔═╗╦═╗╔═╗╔═╗╔╦╗╔═╗╦═╗
     ║  ╠═╣╠═╣╠╦╝╠═╣║   ║ ║╣ ╠╦╝
@@ -99,7 +110,6 @@ def char_create_menu():
       └─┘┴└─└─┘┴ ┴ ┴ ┴└─┘┘└┘ooo
    =============================
     """
-  )
 
 #||====GAME=OVER====||#
 def game_over_screen():
@@ -116,21 +126,16 @@ def game_over_screen():
   )
 
 #||==INSTRUCTIONS==||#
-def instruction_screen():
-  print(
-    """
+instruction_screen ="""
 ==================================
  ╦╔╗╔╔═╗╔╦╗╦═╗╦ ╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
  ║║║║╚═╗ ║ ╠╦╝║ ║║   ║ ║║ ║║║║╚═╗
  ╩╝╚╝╚═╝ ╩ ╩╚═╚═╝╚═╝ ╩ ╩╚═╝╝╚╝╚═╝
 ================================== 
     """
-  )
 
 #||===INFORMATION===||#
-def information_screen():
-  print(
-    """
+about_screen ="""
 =======================    
 ╔═╗  ╔╗   ╔═╗  ╦ ╦  ╔╦╗
 ╠═╣  ╠╩╗  ║ ║  ║ ║   ║ 
@@ -139,8 +144,9 @@ def information_screen():
  │ ├─┤├┤   │ ┬├─┤│││├┤ 
  ┴ ┴ ┴└─┘  └─┘┴ ┴┴ ┴└─┘
 ======================= 
-    """
-  )
+
+
+"""
 
 #||================||#
 
@@ -250,32 +256,69 @@ time.sleep(.75)
 title_ascii()
 time.sleep(2.5)
 clear()
-main_menu()
-time.sleep(0.25)
-print("Welcome, a new adventure!\n")
-time.sleep(0.15)
-print("1. Begin\n2. Instructions\n3. About\nplease type 1, 2 or, 3. \n")
 #||-----------------||#
 
 
 #||MAIN=MENU=OPTIONS||#
+loop = 0
+while loop == 0:
+  clear()
+  menu = input(main_menu)
+#||=====ABOUT======||#
+  if menu == '3':
+    clear()
+    print(about_screen)
+    menu = input(
+      """
+Welcome to the last Quiz Master! This game is a text based 
+quiz rpg, that is set in the trecherous land of Uulgerm'ath
+filled with enimies of everykind from, Dark Posessed knights
+to disguting old hags. An adventure through this land 
+requires knowlege and intellect on an unprecidented scale.
 
-mainmenu = input()
-if mainmenu == '1':
-  clear()
-  char_create_menu()
-elif mainmenu == '2':
-  clear()
-  instruction_screen()
-elif mainmenu == '3':
-  clear()
-  information_screen()
-  time.sleep
-elif mainmenu == 'four':
-  clear()
-  time.sleep(2)
-  while True:
-    print(random.randint(0, 1))
-
-#||-----------------||#
+Input 'b' to return: """)
+  if menu == 'b':
+    continue
+#||====INFO====||#
+  if menu == '2':
+    clear()
+    print(instruction_screen)
+    time.sleep(0.5)
+    print("\n1. Please only input lowercase letters.\n\n")
+    menu = input("Input 'b' to return: ")
+  if menu == 'b':
+    continue
+#||====CHAR=CREATE===||#
+  if menu == '1':
+    clear()
+    print(char_create_menu)
+    menu = input("Press '1' to start, or b to return: ")
+    if menu == '1':
+      break
+    else:
+      continue
+  if menu == 'four':
+    clear()
+    print("Source:\nhttps://en.wikipedia.org/wiki/List_of_common_misconceptions")
+    menu = input("Input 'b' to return: ")
+  if menu == 'b':
+    continue
+#||------------------||#
+  
+clear()
+print(char_create_menu)
+time.sleep(0.5)
+print("Welcome to Uulgerm'ath adventurer!")
+f_name = input("What is your First Name?\n> ")
+time.sleep(0.5)
+print("Greetings and Salutations {}!".format(f_name))
+time.sleep(0.25)
+print("Oh, Yes!")
+s_name = input("So {}, What is your Surname?\n> ".format(f_name))
+time.sleep(0.5)
+clear()
+print(char_create_menu)
+print("A pleasure to make your acquaintance, on this beautiful day! {} {}!".format(f_name, s_name))
+clear()
+print(char_create_menu)
 
